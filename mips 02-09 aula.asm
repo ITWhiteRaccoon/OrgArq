@@ -1,39 +1,41 @@
 .text
 	.globl main
 	
-main:	la	$a0, A	#Gurda string
-	li	$v0, 4	#Imprime
-	syscall
+main:	la	$a0, A	#copia a string A para $a0
+	li	$v0, 4	#syscall imprime(4) $a0
+	syscall		#imprime
 	
-	li	$v0, 5	#Le int
-	syscall
-	move	$s0, $v0 #Guarda int	
+	li	$v0, 5	#syscall le int(5)
+	syscall		#le
+	move	$s0, $v0 #guarda int em $s0	
 	
-	la	$a0, B
-	li	$v0, 4
-	syscall
+	la	$a0, B	#copia a string B para a0
+	li	$v0, 4	#syscall imprime(4) $a0
+	syscall		#imprime
 	
-	li	$v0, 5
-	syscall
-	move	$s1, $v0
+	li	$v0, 5	#syscall le int(5)
+	syscall		#le
+	move	$s1, $v0 #guarda int em $s1
 	
-	addu 	$s2,$s0,$s1 #Guarda em t2 a soma de t0 com t1
 	
-	la	$a0, C	#Prepara str A soma de
-	li	$v0, 4	#Imprime str
-	syscall
+	addu 	$s2,$s0,$s1 #guarda em $s2 a soma de $s0 e $s1
 	
-	move 	$a0, $s0 #Prepara nro x
-	li	$v0, 1	 #Imprime nro
-	syscall
 	
-	la	$a0, D	# e
-	li	$v0, 4
-	syscall
+	la	$a0, C	#copia str 'A soma de ' para $a0
+	li	$v0, 4	#syscall imprime(4) $a0
+	syscall		#imprime
 	
-	move 	$a0, $s1 #Prepara nro x
-	li	$v0, 1	 #Imprime nro
-	syscall
+	move 	$a0, $s0 #copia 1o nro para $a0
+	li	$v0, 1	 #syscall imprime int(1) $a0
+	syscall		 #imprime
+	
+	la	$a0, D	#copia str ' e ' para $a0
+	li	$v0, 4	#syscall imprime(4) $a0
+	syscall		#imprime
+		
+	move 	$a0, $s1 #copia 2o nro para $a0
+	li	$v0, 1	 #syscall imprime int(1) $a0
+	syscall		#imprime
 	
 	la	$a0, E	# eh igual a 
 	li	$v0, 4
@@ -49,6 +51,5 @@ main:	la	$a0, A	#Gurda string
 	.data
 A:	.asciiz	"Digite o 1o. numero: "
 B:	.asciiz	"Digite o 2o. numero: "
-C:	.asciiz	"A soma de "
-D:	.asciiz	" e "
+D:	.asciiz	" menos "
 E:	.asciiz	" eh igual a "
