@@ -39,6 +39,9 @@ int encontraPadrao(int *_vetDados, int _posDados, int *_vetPadrao, int _posPadra
     if (_vetDados[_posDados] != _vetPadrao[_posPadrao]) {
         return 0;
     } else {
+        if (_posPadrao == _tamPadrao - 1) {
+            return 1;
+        }
         return encontraPadrao(_vetDados, _posDados + 1, _vetPadrao, _posPadrao + 1, _tamPadrao);
     }
 }
